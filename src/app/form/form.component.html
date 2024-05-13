@@ -1,0 +1,17 @@
+<diV>NG MODEL</diV>
+<form #form="ngForm">
+    <input required [(ngModel)]="persona.nome" name="nome">
+    <input required [(ngModel)]="persona.cognome" name="cognome">
+    <input required [(ngModel)]="persona.eta" name="eta">
+
+    <button [disabled]="form.invalid" (click)="invia(form.value)">INVIA</button>
+</form>
+
+<div>Reactive Form</div>
+<form [formGroup]="fg">
+    <input type="text" formControlName="nome">
+    <input type="text" formControlName="cognome">
+    <input type="text" formControlName="eta">
+
+    <button (click)="leggi(fg.value)">INVIA</button>
+</form>
