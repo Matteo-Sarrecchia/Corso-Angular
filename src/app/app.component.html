@@ -46,3 +46,39 @@
 <div>PIPE (uppercase)</div>
 {{nome | uppercase}}
 {{nome | test}}
+
+<div>
+  <p>METODO GET / POST</p>
+
+  <button (click)="get()">GET</button>
+  <button (click)="post()">POST</button>
+
+  <div *ngFor="let userKeyVal of persone | keyvalue">
+    <li>{{ userKeyVal.key }}: {{ userKeyVal.value | json }}</li>
+  </div>
+
+</div>
+
+
+<div>
+  <h3>ROTTE</h3>
+  <div>ROUTER LINK</div>
+  <button routerLink="/figlio">Figlio</button>
+  <button routerLink="/figlio2">Figlio2</button>
+
+  <router-outlet></router-outlet>
+
+  <div>CON METODO</div>
+  <button (click)="goToSon()">FiglioConMetodo</button>
+  <button (click)="goToSon2()">Figlio2ConMetodo</button>
+
+  <div>VISUALIZZAZIONE CONTEMPORANEA DI PIU’ COMPONENTI</div>
+  <button [routerLink]="[{outlets: { uscita1: ['figlio']}}]">Figlio</button>
+  <button [routerLink]="[{outlets: { uscita2: ['figlio2']}}]">Figlio2</button>
+
+  <router-outlet name="uscita1"></router-outlet>
+  <router-outlet name="uscita2"></router-outlet>
+
+</div>
+
+

@@ -10,6 +10,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TestPipe } from './test.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { RootingModule } from './rooting/rooting.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { TestPipe } from './test.pipe';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
+    RootingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

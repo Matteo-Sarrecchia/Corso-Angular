@@ -1,5 +1,8 @@
+import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { User } from './user';
+import { TestServiceService } from './test-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,6 +11,20 @@ import { User } from './user';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+
+  persone:User[]
+
+  constructor(private testService:TestServiceService, private router:Router){}
+
+  get(){
+    this.testService.getAll().subscribe((User)=>{this.persone=User})
+  }
+
+  post(){
+    const persona: User = { id:10, nome: 'Mario', cognome: 'Rossi', eta: '30' };
+    this.testService.post(persona).subscribe()
+  }
+
   nome = 'Matteo';
   title = 'xxx';
   eventoPreso:number;
@@ -27,8 +44,9 @@ export class AppComponent {
   valore1=0;
   valore2=1;
 
-  // VARIANILE CHE SEGUI LE CARATTERISTICHE DEL MODELLO USER
+  // VARIABILE CHE SEGUI LE CARATTERISTICHE DEL MODELLO USER
   strutturaUser:User={
+    id:1,
     nome:'Matteo',
     cognome:'Sarrecchia',
     eta:'28'
@@ -42,4 +60,12 @@ export class AppComponent {
     this.x=!this.x
   }
 
+  // FUNZIONI PER CAMBIARE LE ROTTE
+  goToSon(){
+    this.router.navigateByUrl('/figlio')
+  }
+
+  goToSon2(){
+    this.router.navigateByUrl('/figlio2')
+  }
 }
